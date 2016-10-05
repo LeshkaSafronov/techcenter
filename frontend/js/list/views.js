@@ -15,10 +15,10 @@ define(["app",
 			template: itemTpl,
 			events: {
 				'click #show' : 'show',
-				'click #cart' : 'cart'
+				'click .item' : 'show',
+				'click #cart' : 'cart',
 			},
 			show: function() {
-				//alert('show ', this.model.id);
 				App.trigger('show:item', this.model.id);
 			},
 			cart: function() {
