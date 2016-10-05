@@ -21,7 +21,8 @@ define(["app",
 			show: function() {
 				App.trigger('show:item', this.model.id);
 			},
-			cart: function() {
+			cart: function(e) {
+				e.stopImmediatePropagation();
 				this.trigger('view:addItem', 1);
 			}
 		});
