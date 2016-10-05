@@ -13,6 +13,6 @@ var Config = {
 		others: 'Расходные материалы',
 	},
 	currentHeigth : 50,
-	per_page: 6,
+	per_page: 12,
 	photoPagination: 5
 };
