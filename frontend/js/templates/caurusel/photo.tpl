@@ -1,0 +1,1 @@
+<img id='photo-<%= id %>' src=<%= photo_url %> class="photo">

@@ -1,0 +1,302 @@
+.black {
+	background-color: #252530;
+	color: #ffffff;
+}
+.flexible-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.flexible-content {
+	display: flex;
+	justify-content: space-around;
+	align-items: space-between;
+}
+figcaption {
+	text-align: center;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: red;
+}
+figcaption:first-line {
+	color: #2c2a25;
+}
+figure:hover {
+	background-color: #f5f5f5;
+}
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.hbtn:hover {
+	background-color: #9c9c9c;
+}
+.sfield {
+	width: 320px;
+}
+.sfield:focus {
+	width: 480px;
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+}
+.noTitleStuff .ui-dialog-titlebar {display:none}
+.search-result {
+	position: absolute;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+	width: 480px;
+}
+.search-item {
+	display: flex;
+	
+	z-index: 1;
+	background: #ffffff;
+	width: 480px;
+
+   
+    padding: 10px;
+}
+.search-image {
+	height: 45px;
+	margin-right: 10px;
+}
+.search-text {
+	font-size: 15px;
+	/*margin-right: 106px; */
+}
+.search-buttons {
+	margin-top: 22px;
+}
+
+.search {
+	width: 380px;
+}
+
+.caurusel {
+	display: inline-block;
+	text-align: center;
+}
+.caurusel-photo {
+	margin-right: 10px;
+	height: 90%;
+	width: 90%;
+}
+.brd {
+    border-image-width: 10px;
+}
+#list {
+	display: inline-flex;
+}
+.photo {
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+}
+.cursor {
+	height: 18px;
+	margin: auto;
+}
+.current-photo {
+	border-width: initial;
+	border-style: solid;
+	color: #252530;
+}
+#main-photo {
+	text-align: center;
+}
+#photo-source {
+	display: inline-flex;
+}
+.header__text {
+	text-align: left;
+}
+#caurusel-region {
+	text-align: center;
+}
+
+#countItem {
+	width: 50px;
+	margin: auto;
+	text-align: center;
+}
+#prev {
+	margin-right: 3px;
+}
+#next {
+	margin-left: 3px;
+}
+.show {
+	padding: inherit;
+}
+.row-fluid {
+	margin: 10px;
+}
+.loading__source {
+	height: 584px;
+}
+.input__price {
+	width: 50px;
+	height: 18px;
+	margin-right: 10px;
+}
+.borderless td {
+    border: none;
+}
+.input_price__block {
+	display: flex;
+}
+.filter__header {
+	color: #ffffff;
+}
+.filter__table {
+	background: #252530;
+	display: flex;
+	margin-top: 10px;
+	max-width: 220px;
+}
+.filter__table > tbody {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 7px;
+	width: 183px;
+}
+.option__text label, .letter_filter {
+	color: #ffffff;
+}
+.filter__table_div {
+	background: #2c2a25;
+	width: 91%;
+	max-width: 200px;
+}
+
+div.header {
+	height: 59px;
+	font-weight: bold;
+	color: #c4c4c4;
+	display: flex!important;
+	justify-content: space-around!important;
+	align-items: center!important;
+	align-content: space-around!important;
+	flex-wrap: wrap!important;
+}
+a.header {
+	font-size: 16px;
+	text-decoration: none; /* Убирает подчеркивание для ссылок */
+	color: #ffffff;
+} 
+a.header:hover { 
+	font-size: 16px;
+	text-decoration: none; /* Добавляем подчеркивание при наведении курсора на ссылку */
+	color: #ffffff;
+} 
+.badge {
+	background: lightslategray;
+}
+
+
+hr {
+	margin: 0px 0px 5px 0px;
+	color: #aaaaaa;
+}
+
+ul.footer {
+	margin-top: 5px;
+	font-size: 16px;
+}
+ul.footer li {
+	color: #aaaaaa;
+	margin-bottom: 7px;
+}
+ul.footer>li>a {
+	color: #aaaaaa;
+}
+ul.footer>li>a:hover {
+	color: #aaaaaa;
+}
+td b {
+	color: #cccccc;
+}
+.footer {
+  flex: 0 0 auto;
+}
+ul.help li:hover {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.menu__item {
+	background: #252530;
+	color: white;
+}
+.menu__header, .filter__header__name {
+	font-size: 20px;
+}
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #49475a;
+}
+#menu-region, #filter-region {
+	max-width: 228px;
+
+}
+.menu {
+	max-width: 220px;
+}
+.list-image {
+	max-width: 100%;
+}
+#list-region {
+	min-width: 497px;
+}
+.filter__btn {
+	max-width: 220px;
+}
+
+#for-cart {
+	display: inline-flex;
+}
+#for-cart > button {
+	margin-right: 10px;
+}
+.checkbox > #remember_me {
+	margin-left: 0px;
+}
+.__form {
+	width: 320px;
+}
+td a {
+    display:block;
+    width:100%;
+}
+.button_to {
+	margin-bottom: 10px;
+}
+.user-info > img {
+	margin-bottom: 10px;
+	width: 180px;
+}
+.user-panel {
+	max-width: 330px;
+	min-width: 256px;
+}
+
+#info-region {
+	margin-bottom: 10px; 
+}
+
+#header {
+	position: fixed;
+	width: 100%;
+	z-index: 4;
+}
+
+#source {
+	margin-top: 65px; 
+}
+#count {
+	height: 18px;
+	min-width: 19px;
+}
