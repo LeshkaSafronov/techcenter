@@ -41,23 +41,23 @@ define(["app",
 				});
 				this.listenTo(this.view, 'photo:group', function(nav) {
 					if (nav === 'prev') {
-						if (start - Config.pagLen >= 0) {
+						if (start - Config.photoPagination >= 0) {
 							var previews = [];
-							start -= Config.pagLen;
-							for (var i = start; i < start+Config.pagLen; i++) {
+							start -= Config.photoPagination;
+							for (var i = start; i < start+Config.photoPagination; i++) {
 								previews.push(dataCollection.at(i));
 							}
-							view.trigger('change:previews', previews);
+							this.view.trigger('change:previews', previews);
 						}
 					}
 					if (nav === 'next') {
-						if (start + Config.pagLen < dataCollection.length) {
+						if (start + Config.photoPagination < dataCollection.length) {
 							var previews = [];
-							start += Config.pagLen;
-							for (var i = start; i < Math.min(start+Config.pagLen, dataCollection.length); i++) {
+							start += Config.photoPagination;
+							for (var i = start; i < Math.min(start+Config.photoPagination, dataCollection.length); i++) {
 								previews.push(dataCollection.at(i));
 							}
-							view.trigger('change:previews', previews);
+							this.view.trigger('change:previews', previews);
 						}
 					}
 				});
