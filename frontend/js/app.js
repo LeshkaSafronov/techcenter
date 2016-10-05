@@ -21,5 +21,10 @@ define(["marionette"], function (Marionette) {
 		var l = response.lastIndexOf('"', r-1) + 1;
 		return response.substr(l, r-l+1);
 	}
+	
+	App.getCart = function() {
+		var promise = promise || $.ajax('api/home');
+		return promise;
+	}
 	return App;
 });

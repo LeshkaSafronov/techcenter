@@ -27,7 +27,5 @@ requirejs.config({
 	}
 });
 require(["app", "jscookie", "config", "routers"], function(App) {
-	$.ajax('api/home').done(function() {
-		App.start();
-	});
+	App.start();
 });

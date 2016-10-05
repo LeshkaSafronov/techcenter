@@ -22,7 +22,8 @@ define(["app",
 						this.cart.fetch();
 					}
 				});
-			}
+			},
+
 		});
 	});
 });

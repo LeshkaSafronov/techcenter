@@ -13,11 +13,14 @@ define(["app"], function(App) {
 		});
 		var API = {
 			getCart: function() {
-				var model = new Cart.Model({id: $.cookie('log_cart') ? +$.cookie('log_cart') : +$.cookie('stgr_cart')});
-				model.fetch();
+				var promise = App.getCart();
+				var model = new Cart.Model();
+				promise.done(function() {
+					model.set('id', $.cookie('log_cart') ? +$.cookie('log_cart') : +$.cookie('stgr_cart'));
+					model.fetch();
+				});
 				return model;
 			},
-
 		}
 		App.reqres.setHandler('get:cart', function() {
 			return API.getCart();
