@@ -22,7 +22,7 @@ define(["app",
 				App.trigger('show:item', this.model.id);
 			},
 			cart: function() {
-				alert('cart');
+				this.trigger('view:addItem', 1);
 			}
 		});
 		List.CompositeView = Marionette.CompositeView.extend({

@@ -1,4 +1,5 @@
 define(["app",
+		"show/models",
 		"list/models",
 		"list/views",
 		"header/controllers",
@@ -23,6 +24,27 @@ define(["app",
 				this.listenTo(this.loading, 'view:sync', function() {
 					pageLayout.showChildView('listRegion', this.view);
 				}.bind(this));
+
+
+
+				this.listenTo(this.view, 'childview:view:addItem', function(childView, quantity) {
+					addItem = App.request('get:addItem', childView.model.id);
+					var token = self.getAuthenticityToken();
+					token.done(function(response) {
+						authToken = App.parseToken(response);
+						addItem.set({
+							'quantity': quantity,
+							'authenticity_token': authToken
+						});
+						addItem.save().done(function() {
+							App.trigger('update:cart');
+						});
+					}); 
+				});
+			},
+
+			getAuthenticityToken: function() {
+				return $.get('/api/show/' + this.id);
 			}
 		});
 	});
