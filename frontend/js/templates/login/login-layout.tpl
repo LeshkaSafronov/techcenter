@@ -1,5 +1,6 @@
 <div class="container">
   <div class="center-block __form">
+    <img src='images/i/logo_black.png'>
     <br>
     <div class="panel panel-default">
       <div class="panel-heading">
