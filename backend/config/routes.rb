@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'api/laminators' => 'app#laminator'
   get 'api/bookbinders' => 'app#bookbinder'
   get 'api/others' => 'app#other'
-  get '/search' => 'app#search'
+  get 'api/search' => 'app#search'
   get '/help' => 'app#help'
 
 

@@ -24,8 +24,9 @@ class AppController < ApplicationController
 	end
 
   def search
-    @tmp = Item.where('name LIKE ? OR description LIKE ?', "%"+params[:req]+"%", "%"+params[:req]+"%").paginate(:page => params[:page], :per_page => 12)
+    @tmp = Item.where("name LIKE ? ",'%'+params[:query].downcase+'%').paginate(:page => params[:page], :per_page => params[:per_page])
     @items = @tmp.map { |x| x = { id: x.id, name: x.name, price: x.price, link: x.avatar.url, rate: x.calculate_rate} }
+  	render :json => @items
   end
 
   def help
