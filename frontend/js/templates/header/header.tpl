@@ -4,11 +4,11 @@
     <div class='search'>
       <div class="input-group">
             <span class="input-group-btn">
-              <button type="submit" class="btn btn-default" type="button">
+              <button id='submit' type="submit" class="btn btn-default" type="button">
                 <img src='images/i/search.png' height="20px">
               </button>
             </span>
-            <input type="text" class="form-control" placeholder="Поиск" name="req">
+            <input id='search' type="text" class="form-control" placeholder="Поиск" name="req">
       </div>
     </div>
     <div class="hidden-xs hidden-sm">

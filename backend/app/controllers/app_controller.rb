@@ -24,9 +24,11 @@ class AppController < ApplicationController
 	end
 
   def search
+  	@fullCount = Item.where("name LIKE ? ",'%'+params[:query].downcase+'%').count
     @tmp = Item.where("name LIKE ? ",'%'+params[:query].downcase+'%').paginate(:page => params[:page], :per_page => params[:per_page])
+    
     @items = @tmp.map { |x| x = { id: x.id, name: x.name, price: x.price, link: x.avatar.url, rate: x.calculate_rate} }
-  	render :json => @items
+  	render :json => {count: @fullCount, data: @items}
   end
 
   def help

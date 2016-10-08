@@ -240,7 +240,6 @@ ul.help li:hover {
 }
 #menu-region, #filter-region {
 	max-width: 228px;
-
 }
 .menu {
 	max-width: 220px;
@@ -361,4 +360,7 @@ td a {
 .new__input-profile {
 	width: 57px;
 	margin-right: 10px; 
+}
+.search__header {
+	margin-bottom: 20px; 
 }

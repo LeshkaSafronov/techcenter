@@ -18,7 +18,8 @@ define(["app",
 				'signup' : 'signUp',
 				'login' : 'login',
 				'users/(:id)' : 'users',
-				'new' : 'new'
+				'new' : 'new',
+				'search' : 'search'
 			}
 		});
 		var API = Marionette.Controller.extend({
@@ -60,6 +61,13 @@ define(["app",
 					new NewController();
 				});
 			},
+
+			search: function() {
+				var url = Backbone.history.getFragment();
+				require(['search/controllers'], function(SeachController) {
+					new SeachController(App.UrlToJSON(url));
+				});
+			},
 			
 			hasLogin: function() {
 				var cookieModel = App.request('get:cookieUser');
@@ -75,17 +83,26 @@ define(["app",
 				$(document).scrollTop(0);
 				Backbone.history.navigate('', true);
 			});
+			
 			router.listenTo(App, 'route:menu', function(nav) {
 				Backbone.history.navigate(nav, true);
 				$(document).scrollTop(0);
 			});
+			
 			router.listenTo(App, 'route:login', function(nav) {
 				Backbone.history.navigate(nav, true);
 			});
+
 			router.listenTo(App, 'route:page', function(options) {
 				Backbone.history.navigate(options.name + '?page=' + options.page + '&per_page=' + Config.per_page, true);
 				$(document).scrollTop(0);
 			});
+
+			router.listenTo(App, 'route:search:page', function(options) {
+				Backbone.history.navigate(options.name + '?query=' + options.query + '&page=' + options.page + '&per_page=' + Config.per_page, true);
+				$(document).scrollTop(0);
+			});
+
 			router.listenTo(App, 'show:item', function(id) {
 				Backbone.history.navigate('show/' + id, true);
 			});

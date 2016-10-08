@@ -5,7 +5,9 @@ define(["app",
 			template: headerTpl,
 			events: {
 				'click #login': 'login',
-				'click #main' : 'main'
+				'click #main' : 'main',
+				'click #submit' : 'clickSearch',
+				'keypress #search' : 'search'
 	 		},
 
 	 		initialize: function(options) {
@@ -28,6 +30,16 @@ define(["app",
 
 	 		login: function() {
 	 			Backbone.history.navigate('login', true);
+	 		},
+
+	 		search: function(e) {
+	 			if (e.keyCode == 13) {
+	 				Backbone.history.navigate('search?query=' + this.$('#search').val(), true);
+	 			}
+	 		},
+
+	 		clickSearch: function(e) {
+	 			Backbone.history.navigate('search?query=' + this.$('#search').val(), true);
 	 		},
 
 	 		serializeData: function() {
