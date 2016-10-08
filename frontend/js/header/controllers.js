@@ -26,4 +26,5 @@ define(["app",
 
 		});
 	});
+	return App.StoreApp.Header.Controller;
 });

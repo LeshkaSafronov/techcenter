@@ -2,20 +2,21 @@ define(["app",
 		"show/models",
 		"list/models",
 		"list/views",
-		"header/controllers",
-		"footer/controllers",
 		"menu/views",
-		"filter/controllers",
 		"loading/views"], function(App) {
 	App.module("StoreApp.List", function(List, App, Backbone, Marionette, $, _) {
 		List.Controller = Marionette.Controller.extend({
 			initialize: function(options) {
-				new App.StoreApp.Header.Controller();
-				new App.StoreApp.Footer.Controller();
+				require(['header/controllers', 'footer/controllers'], function(HeaderController, FooterController) {
+					new HeaderController();
+					new FooterController();
+				});
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
 				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());
-				new App.StoreApp.Filter.Controller({category: options.name, layout: pageLayout});
+				require(['filter/controllers'], function(FilterController) {
+					new FilterController({category: options.name, layout: pageLayout});
+				});
 				this.collection = App.request("list:entities", options);
 				var self = this;
 				this.loading = new App.StoreApp.Loading.View({collection: this.collection});
