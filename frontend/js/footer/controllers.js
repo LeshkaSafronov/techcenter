@@ -5,7 +5,7 @@ define(["app",
 			initialize: function() {
 				this.showFooter();
 			},
-
+			
 			showFooter: function() {
 				this.view = new Footer.View();
 				App.footerRegion.show(this.view);

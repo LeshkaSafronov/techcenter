@@ -5,7 +5,7 @@ define(["app",
 		"header/controllers",
 		"footer/controllers",
 		"menu/views",
-		"filter/views",
+		"filter/controllers",
 		"loading/views"], function(App) {
 	App.module("StoreApp.List", function(List, App, Backbone, Marionette, $, _) {
 		List.Controller = Marionette.Controller.extend({
@@ -15,7 +15,7 @@ define(["app",
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
 				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());
-				pageLayout.showChildView('filterRegion', new App.StoreApp.Filter.View());
+				new App.StoreApp.Filter.Controller({category: options.name, layout: pageLayout});
 				this.collection = App.request("list:entities", options);
 				var self = this;
 				this.loading = new App.StoreApp.Loading.View({collection: this.collection});
