@@ -3,6 +3,7 @@ define(["app",
 		"list/models",
 		"list/views",
 		"header/controllers",
+		"footer/controllers",
 		"menu/views",
 		"filter/views",
 		"loading/views"], function(App) {
@@ -10,6 +11,7 @@ define(["app",
 		List.Controller = Marionette.Controller.extend({
 			initialize: function(options) {
 				new App.StoreApp.Header.Controller();
+				new App.StoreApp.Footer.Controller();
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
 				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());

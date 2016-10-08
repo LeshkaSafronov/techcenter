@@ -1,11 +1,13 @@
 define(["app",
 		"header/controllers",
+		"footer/controllers",
 		"signup/models",
 		"signup/views"], function(App) {
 	App.module("StoreApp.SignUp", function(SignUp, App, Backbone, Marionette, $, _) {
 		SignUp.Controller = Marionette.Controller.extend({
 			initialize: function() {
 				new App.StoreApp.Header.Controller();
+				new App.StoreApp.Footer.Controller();
 				var layout = new SignUp.LayoutView();
 				App.sourceRegion.show(layout);
 

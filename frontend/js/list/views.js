@@ -62,7 +62,7 @@ define(["app",
 					this.$('#page-«').toggleClass("disabled");
 					this.$('#page-«').click(false);
 				}
-				if (this.collection.options.page === paginationCount) {
+				if (this.collection.options.page === paginationCount || !this.collection.length) {
 					this.$('#page-»').toggleClass("disabled");
 					this.$('#page-»').click(false);
 				}

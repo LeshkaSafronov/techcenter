@@ -1,5 +1,6 @@
 define(["app",
 		"header/controllers",
+		"footer/controllers",
 		"caurusel/controllers",
 		"show/models",
 		"cart/models",
@@ -16,6 +17,7 @@ define(["app",
 				this.model.on('sync', function() {
 					App.sourceRegion.show(self.layout);
 					new App.StoreApp.Header.Controller();
+					new App.StoreApp.Footer.Controller();
 					new App.StoreApp.Caurusel.Controller(self.layout);
 					self.showItem(id);
 				});

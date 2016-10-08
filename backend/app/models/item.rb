@@ -6,7 +6,6 @@ class Item < ActiveRecord::Base
 	validates :name, :price, presence: true
 	validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
-
 	def calculate_rate
 		Feedback.where(item_id: self.id).average("rate") || 5.0
 	end

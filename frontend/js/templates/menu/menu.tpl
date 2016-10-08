@@ -7,8 +7,8 @@
 	  	<tbody class='menu__item'>
 		    <% _.each(columns, function(column) { %>
 		      <tr>
-		        <td class='nav' id=<%= column %> >
-		        	<a href='javascript:void(0)'><b><%= Config.Dict[column] %></b></a>
+		        <td id='<%= column %>' class='nav'>
+		        	<a href="javascript:void(0)" style="text-decoration:none"><b><%= Config.Dict[column] %></b></a>
 		        </td>
 		      </tr>
 		    <% }) %>

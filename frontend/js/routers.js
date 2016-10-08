@@ -3,26 +3,30 @@ define(["app",
 	App.module("StoreApp", function(StoreApp, App, Backbone, Marionette, $, _) {
 		StoreApp.AppRouter = Marionette.AppRouter.extend({
 			appRoutes: {
-				'' : 'listPrinters',
-				'printers' : 'listPrinters',
-				'scanners' : 'listScanners',
+				'' : 'listShow',
+				'printers' : 'listShow',
+				'scanners' : 'listShow',
+				'mfus' : 'listShow',
+				'scanners' : 'listShow',
+				'papers' : 'listShow',
+				'shredders' : 'listShow',
+				'cartridges' : 'listShow',
+				'laminators' : 'listShow',
+				'bookbinders' : 'listShow',
+				'others' : 'listShow',
 				'show/:id' : 'showItem',
 				'signup' : 'signUp',
 				'login' : 'login',
-				'users/(:id)' : 'users'
+				'users/(:id)' : 'users',
+				'new' : 'new'
 			}
 		});
 		var API = Marionette.Controller.extend({
-			listItems: function() {
-				new StoreApp.List.Controller(name);
-			},
-			listPrinters: function(options) {
+			listShow: function(options) {
+				var url = Backbone.history.getFragment();
 				require(["list/controllers"], function(ListController) {
-					new ListController(_.extend({name: 'printers'}, App.UrlToJSON(options)));
+					new ListController(App.UrlToJSON(url));
 				});
-			},
-			listScanners: function() {
-				new StoreApp.Item.Controller('scanners');
 			},
 			login: function() {
 				var id = this.hasLogin();
@@ -41,36 +45,46 @@ define(["app",
 				});
 			},
 			signUp: function() {
-				require(["signup/controllers"], function(SignUpController) {
+				require(["signup/controllers", "footer/controllers"], function(SignUpController) {
 					new SignUpController();
 				});
 			},
 			users: function(id) {
-				require(["user/controllers"], function(UserController) {
+				require(["user/controllers", "footer/controllers"], function(UserController) {
 					new UserController(id);
 				});
 			},
 
+			new: function() {
+				require(["new/controllers"], function(NewController) {
+					new NewController();
+				});
+			},
+			
 			hasLogin: function() {
 				var cookieModel = App.request('get:cookieUser');
 				if (!_.isUndefined(cookieModel.id)) {
 					return cookieModel.id;
+					new FooterController();
 				}
 			}
 		});
 		App.addInitializer(function() {
 			var router = new StoreApp.AppRouter({controller: new API()});
 			router.listenTo(App, 'route:main', function(nav) {
+				$(document).scrollTop(0);
 				Backbone.history.navigate('', true);
 			});
 			router.listenTo(App, 'route:menu', function(nav) {
 				Backbone.history.navigate(nav, true);
+				$(document).scrollTop(0);
 			});
 			router.listenTo(App, 'route:login', function(nav) {
 				Backbone.history.navigate(nav, true);
 			});
 			router.listenTo(App, 'route:page', function(options) {
 				Backbone.history.navigate(options.name + '?page=' + options.page + '&per_page=' + Config.per_page, true);
+				$(document).scrollTop(0);
 			});
 			router.listenTo(App, 'show:item', function(id) {
 				Backbone.history.navigate('show/' + id, true);

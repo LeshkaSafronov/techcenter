@@ -5,9 +5,9 @@ define(["app", "tpl!templates/menu/menu.tpl"], function(App, menuTpl) {
 			events: {
 				'click .nav' : 'nav',
 			},
-			columns: ['printers', 'scanners', 'paper', 'cartridges', 'laminators', 'bookbinders', 'others'],
-			nav: function(event) {
-				App.trigger("route:menu", event.target.id);
+			columns: ['printers', 'mfus', 'scanners', 'papers', 'cartridges', 'laminators', 'bookbinders', 'others'],
+			nav: function(e) {
+				App.trigger("route:menu", e.currentTarget.id);
 			},
 			serializeData: function() {
 				var data = {};

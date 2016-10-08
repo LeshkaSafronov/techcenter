@@ -2,20 +2,18 @@ Rails.application.routes.draw do
 
   get 'api/home' => 'app#home'
   get 'api/printers' => 'app#printer'
-  get 'api/mfu' => 'app#mfu'
+  get 'api/mfus' => 'app#mfu'
   get 'api/scanners' => 'app#scanner'
-  get '/paper' => 'app#paper'
-  get '/shredders' => 'app#shredder'
-  get '/cartridges' => 'app#cartridge'
-  get '/laminators' => 'app#laminator'
-  get '/bookbinders' => 'app#bookbinder'
-  get '/other' => 'app#other'
+  get 'api/papers' => 'app#papers'
+  get 'api/shredders' => 'app#shredder'
+  get 'api/cartridges' => 'app#cartridge'
+  get 'api/laminators' => 'app#laminator'
+  get 'api/bookbinders' => 'app#bookbinder'
+  get 'api/others' => 'app#other'
   get '/search' => 'app#search'
   get '/help' => 'app#help'
 
 
-
-  get 'api/printers/(:id)' => 'app#printer'
 
 
   get 'api/users/(:id)' => 'user#show'
@@ -37,7 +35,12 @@ Rails.application.routes.draw do
   get 'api/show/(:id)' => 'item#item'
   get 'api/item/(:id)' => 'item#show'
   post 'api/item/(:id)/add' => 'item#add'
+
+  get 'api/new' => 'item#new'
+  post 'api/new' => 'item#create'
+  
   post 'api/item' => 'item#create'
+  
   patch 'api/item/(:id)' => 'item#edit'
   delete 'api/item/(:id)' => 'item#destroy'
   delete 'cart_item/(:id)' => 'cart_item#destroy'

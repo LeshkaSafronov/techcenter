@@ -300,3 +300,65 @@ td a {
 	height: 18px;
 	min-width: 19px;
 }
+.new__header {
+	font-size: xx-large;
+}
+.new__field-name {
+	font-size: large;
+}
+.new__form {
+	display: flex;
+}
+.new__form > .form__container {
+	width: 400px;
+}
+.new__field {
+	margin-bottom: 20px; 
+}
+.new__input {
+	width: 400px;
+}
+.new__field-price {
+	display: flex;
+}
+.new__field-price > p {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;   
+}
+.new__field-price > .new__input {
+	width: 70px;
+	margin-right: 10px; 
+}
+.upload__photo {
+	height: 50px;
+}
+.new__field-thumb {
+	margin-bottom: 10px; 
+	display: flex;
+	flex-wrap: wrap;
+}
+.remove_img {
+	height: 15px;
+	position: absolute;
+}
+.thumb-photo {
+	margin-right: 5px; 
+	margin-top: 5px; 
+}
+.new__field-save {
+	margin-bottom: 20px; 
+}
+
+.new__field-profile {
+	display: flex;
+}
+.new__field-profile > p {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;   
+}
+.new__input-profile {
+	width: 57px;
+	margin-right: 10px; 
+}

@@ -1,5 +1,9 @@
 class ItemController < ApplicationController
 
+	def new
+		render 'new'
+	end
+
 	def show
 		@item = Item.find(params[:id])
 		@avatar = @item.avatar.url
@@ -11,10 +15,9 @@ class ItemController < ApplicationController
 		render 'show'
 	end
 
-	def create 
-		params[:details] = storeable params[:details]
-		@item = Item.create(item_params)
-		redirect_to "/item/#{@item.id}"
+	def create
+		@item = Item.create({name: params[:name], group: params[:group], price: params[:price], width: params[:width], height: params[:height], depth: params[:depth], description: params[:description], avatar: params[:avatar]})
+		render :json => {message: 'Success'}
 	end
 
 	def add

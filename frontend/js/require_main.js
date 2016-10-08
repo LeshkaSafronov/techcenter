@@ -22,7 +22,7 @@ requirejs.config({
 			deps: ["jquery", "underscore"]
 		},
 		marionette: {
-			deps: ["backbone", "stickit", "jscookie"]
+			deps: ["backbone", "stickit", "jscookie", "bootstrap"]
 		}
 	}
 });
