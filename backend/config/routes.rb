@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'api/printers' => 'app#printer'
   get 'api/mfus' => 'app#mfu'
   get 'api/scanners' => 'app#scanner'
-  get 'api/papers' => 'app#papers'
+  get 'api/papers' => 'app#paper'
   get 'api/shredders' => 'app#shredder'
   get 'api/cartridges' => 'app#cartridge'
   get 'api/laminators' => 'app#laminator'

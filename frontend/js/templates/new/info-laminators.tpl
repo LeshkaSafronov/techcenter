@@ -2,8 +2,8 @@
 	<p class="new__field-name"> Тип ламинатора: </p>
 	<div class="input-group new__input">
 		<div class="checkbox">
-			<% _.each(types, function(type) { %>
-	  			<label class='new__checkbox'><input type="checkbox" value=""> <%= type %> </label>
+			<% _.each(kinds, function(kind) { %>
+	  			<label class='new__checkbox'><input id='<%= kinds.indexOf(kind) %>' class='kind' type="checkbox" value=""><%= kind %></label>
 	  		<% }) %>
 		</div>
 	</div>

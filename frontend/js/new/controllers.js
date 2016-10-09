@@ -35,11 +35,21 @@ define(["app",
 					});
 				});
 			},
-			changeGroup: function(group) {
-				this.model.set('group', group.slice(0,-1));
-				this.infoModel = App.request('get:filter', group);
-				this.info = new New.InfoView({model: this.infoModel, category: group});
+			changeGroup: function(previousGroup, newGroup) {
+				if (!_.isUndefined(previousGroup)) {
+					this.clearModel(previousGroup);
+				}
+				this.model.set('group', newGroup.slice(0,-1));
+				this.infoModel = App.request('get:filter', newGroup);
+				this.info = new New.InfoView({model: this.model, infoModel: this.infoModel, category: newGroup});
 				this.view.showChildView('infoRegion', this.info);
+			},
+
+			clearModel: function(group) {
+				var self = this;
+				_.each(Config.attrOnBackend[group], function(attr) {
+					self.model.set(attr, '');
+				});
 			},
 
 			getAuthenticityToken: function() {

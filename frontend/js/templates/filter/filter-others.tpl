@@ -20,9 +20,9 @@
         <tr>
           <td>
             <div class="option__text">
-              <% _.each(types, function(type) { %>
+              <% _.each(kinds, function(kind) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= type %> </label>
+                  <label><input type="checkbox" value=""> <%= kind %> </label>
                 </div>
               <% }) %>
             </div>

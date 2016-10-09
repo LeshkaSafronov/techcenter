@@ -13,6 +13,16 @@ var Config = {
 		others: 'Расходные материалы',
 	},
 	
+	attrOnBackend: {
+		printers: ['color', 'maxFormat', 'doublePrint', 'brand'],
+		mfus: ['color', 'maxFormat', 'doublePrint', 'brand'],
+		scanners: ['kind', 'automaticFeed', 'doubleScan', 'maxFormat', 'brand'],
+		papers: ['format', 'brand'],
+		laminators: ['kind'],
+		bookbinders: ['kind'],
+		others: ['kind']
+	},
+
 	property: {
 		printers: {
 			colors: ['Цветная', 'Черно-белая'],
@@ -29,7 +39,7 @@ var Config = {
 		},
 
 		scanners: {
-			types: ['Планшетный', 'Протяжный', 'Слайд-сканер'],
+			kinds: ['Планшетный', 'Протяжный', 'Слайд-сканер'],
 			automaticFeed: ['Есть', 'Нет'],
 			doubleScan: ['Есть', 'Нет'],
 			maxFormats: ['А0', 'А1', 'А2', 'А3', 'А4'],
@@ -42,15 +52,15 @@ var Config = {
 		},
 
 		laminators: {
-			types: ['Персональный', 'Офисный', 'Рулонный']
+			kinds: ['Персональный', 'Офисный', 'Рулонный']
 		},
 
 		bookbinders: {
-			types: ['Пластиковый', 'Металлический', 'Термопереплет', 'Многофункциональный']
+			kinds: ['Пластиковый', 'Металлический', 'Термопереплет', 'Многофункциональный']
 		},
 
 		others: {
-			types: ['Для переплета', 'Для ламинирования', 'Для шредера']
+			kinds: ['Для переплета', 'Для ламинирования', 'Для шредера']
 		}
 	},
 

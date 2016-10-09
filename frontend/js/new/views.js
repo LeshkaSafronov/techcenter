@@ -60,8 +60,13 @@ define(["app",
 			},
 
 			selectCategory: function(e) {
-				this.$('#group').text(e.currentTarget.text);
-				this.trigger('change:group', e.currentTarget.id);
+				this.currentCategory = e.currentTarget.id;
+				if (this.currentCategory !== this.previousCategory) {
+					this.$('#group').text(e.currentTarget.text);
+					this.$('#save').prop("disabled", false);
+					this.trigger('change:group', this.previousCategory, this.currentCategory);
+					this.previousCategory = this.currentCategory
+				}
 			},
 
 			onRender: function() {
@@ -81,16 +86,48 @@ define(["app",
 				others: infoOthersTpl
 			},
 
+			events: {
+				'change .color' : 'setValue',
+				'change .maxFormat' : 'setValue',
+				'change .doublePrint' : 'setValue',
+				'change .brand' : 'setValue',
+				'change .automaticFeed' : 'setValue',
+				'change .doubleScan' : 'setValue',
+				'change .format' : 'setValue',
+				'change .kind' : 'setValue'
+			},
+
 			getTemplate: function() {
 				return this.dataTeplate[this.options.category];
 			},
 
 			initialize: function(options) {
 				this.options = options;
+				this.infoModel = options.infoModel;
+			},
+
+			setValue: function(e) {
+				var curId = e.currentTarget.id;
+				var len = this.$('.' + e.currentTarget.className).length;
+				// make all checkbox unchecked
+				for (var i = 0; i < len; i++) {
+					var checkbox = this.$('.' + e.currentTarget.className).eq(i);
+					if (checkbox.attr('id') !== curId) {
+						checkbox.prop('checked', false);
+					}
+				}
+				var className = e.currentTarget.className;
+				var text = e.currentTarget.labels[0].textContent;
+				if (e.currentTarget.checked) {
+					this.model.set(className, text);
+				}
+				else {
+					this.model.set(className, '');
+				}
 			},
 
 			serializeData: function() {
-				var data = this.model.get('property');
+				var data = this.infoModel.get('property');
 				return data;
 			}
 		});

@@ -53,7 +53,7 @@
 		  		</div>
 		  	</div>
 			<div class="new__field-save">
-		  		<button id='save' type="button" class="btn btn-default">Сохранить</button>
+		  		<button id='save' type="button" class="btn btn-default" disabled>Сохранить</button>
 		  	</div>
 	  	</div>
 	</div>

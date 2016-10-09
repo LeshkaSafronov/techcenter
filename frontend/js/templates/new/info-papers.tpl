@@ -3,7 +3,7 @@
 	<div class="input-group new__input">
 		<div class="checkbox">
 			<% _.each(formats, function(format) { %>
-	  			<label class='new__checkbox'><input type="checkbox" value=""> <%= format %> </label>
+	  			<label class='new__checkbox'><input id='<%= formats.indexOf(format) %>' class='format' type="checkbox" value=""><%= format %></label>
 	  		<% }) %>
 		</div>
 	</div>
@@ -14,7 +14,7 @@
 	<div class="input-group new__input">
 		<div class="checkbox">
 			<% _.each(brands, function(brand) { %>
-  				<label class='new__checkbox'><input type="checkbox" value=""> <%= brand %> </label>
+  				<label class='new__checkbox'><input id='<%= brands.indexOf(brand) %>' class='brand' type="checkbox" value=""><%= brand %></label>
   			<% }) %>
 		</div>
 	</div>

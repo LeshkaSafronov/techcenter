@@ -16,8 +16,53 @@ class ItemController < ApplicationController
 	end
 
 	def create
-		@item = Item.create({name: params[:name], group: params[:group], price: params[:price], width: params[:width], height: params[:height], depth: params[:depth], description: params[:description], avatar: params[:avatar]})
-		render :json => {message: 'Success'}
+		@main_info = {
+			name: params[:name],
+			group: params[:group],
+			price: params[:price],
+			width: params[:width],
+			height: params[:height],
+			depth: params[:depth],
+			description: params[:description],
+			avatar: params[:avatar]
+		}
+		@advanced_info = {
+			printer: {
+				color: params[:color],
+				maxFormat: params[:maxFormat],
+				doublePrint: params[:doublePrint],
+				brand: params[:brand]
+			},
+			mfu: {
+				color: params[:color],
+				maxFormat: params[:maxFormat],
+				doublePrint: params[:doublePrint],
+				brand: params[:brand]
+			},
+			scanner: {
+				kind: params[:kind],
+				automaticFeed: params[:automaticFeed],
+				doubleScan: params[:doubleScan],
+				maxFormat: params[:maxFormat],
+				brand: params[:brand]
+			},
+			paper: {
+				format: params[:format],
+				brand: params[:brand]
+			},
+			cartridge: {},
+			laminator: {
+				kind: params[:kind]
+			},
+			bookbinder: {
+				kind: params[:kind]
+			},
+			other: {
+				kind: params[:kind]
+			}
+		}
+		@item = Item.create(@main_info.merge(@advanced_info[params[:group].to_sym]))
+		render :json => {message: 'Success', data: @main_info.merge(@advanced_info[params[:group].to_sym])}
 	end
 
 	def add

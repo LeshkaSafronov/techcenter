@@ -9,7 +9,15 @@ define(["app"], function(App) {
 				price: 0,
 				width: 0,
 				height: 0,
-				depth: 0
+				depth: 0,
+				color: '',
+				maxFormat: '',
+				doublePrint: '',
+				brand: '',
+				automaticFeed: '',
+				doubleScan: '',
+				format: '',
+				kind: ''
 			},
 
 			url: 'api/new',
