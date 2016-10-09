@@ -14,12 +14,12 @@ class AppController < ApplicationController
 		@tmp = Item.where(group: name).paginate(:page => params[:page], :per_page => params[:per_page])
 		@tmp = @tmp.where("price >= ? AND price <= ?",params[:range].scan(/\d+/)[0].to_i,params[:range].scan(/\d+/)[1].to_i) if !params[:range].nil?
 		@items = @tmp.map { |x| x = { id: x.id, name: x.name, price: x.price, link: x.avatar.url, rate: x.calculate_rate} }
-		@max = Item.where(group: name).maximum(:price)
-		@min = Item.where(group: name).minimum(:price)
+		@max = Item.where(group: name).maximum(:price) || 0
+		@min = Item.where(group: name).minimum(:price) || 0
 		if (params[:id])
 			render :json => {id: params[:id], data: Item.where(group: @name, item_id: params[:id])}
 		else
-			render :json => {id: params[:id], count: Item.where(group: name).count, data: @items}
+			render :json => {id: params[:id], count: Item.where(group: name).count, data: @items, min_max: {min: @min, max: @max}}
 		end
 	end
 

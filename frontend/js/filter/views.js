@@ -56,18 +56,27 @@ define(["app",
 
 			initialize: function(options) {
 				this.options = options;
+				var self = this;
+				this.options.listCollection.on('sync', function() {
+					self.render();
+					self.renderSlide()
+				});
 			},
 
 			serializeData: function() {
 				var data = this.model.get('property');
+				data.min = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.min : 0;
+				data.max = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.max : 0;
 				return data;
 			},
 
-			onShow: function() {
+			renderSlide: function() {
+				var min = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.min : 0;
+				var max = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.max : 0;
 				if (this.options.category !== 'cartridges') {
 					var slider = new Slider('#ex2', {
 						tooltip: 'hide',
-						value: [10, 1000]
+						value: [min, max]
 					});
 					slider.on('slide', function() {
 						$('#left-range').val(slider.getValue()[0]);
@@ -78,6 +87,10 @@ define(["app",
 						$('#right-range').val(slider.getValue()[1]);
 					});
 				}
+			},
+
+			onShow: function() {
+				this.renderSlide();
 			}
 		});
 	});

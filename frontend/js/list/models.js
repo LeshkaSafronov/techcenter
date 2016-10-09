@@ -26,6 +26,7 @@ define(["app"], function(App) {
 			},
 			parse: function(response) {
 				this.count = response.count;
+				this.minMax = response.min_max;
 				return response.data;
 			}
 		});

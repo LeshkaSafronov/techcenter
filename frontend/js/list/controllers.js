@@ -14,11 +14,13 @@ define(["app",
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
 				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());
-				require(['filter/controllers'], function(FilterController) {
-					new FilterController({category: options.name, layout: pageLayout});
-				});
 				this.collection = App.request("list:entities", options);
 				var self = this;
+				if (options.name !== 'cartridges') {
+	 				require(['filter/controllers'], function(FilterController) {
+						new FilterController({category: options.name, layout: pageLayout, listCollection: self.collection});
+					});
+	 			}
 				this.loading = new App.StoreApp.Loading.View({collection: this.collection});
 				pageLayout.showChildView('loadingRegion', this.loading);
 				this.view = new List.CompositeView({

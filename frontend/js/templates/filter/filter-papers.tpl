@@ -6,11 +6,11 @@
           <td class="filter__header"><b>цена</b></td>
         </tr>
         <tr class='input_price__block'>
-          <td> <span class="letter_filter"> от </span> <input id='left-range' value="0" class="input__price"> </td>
-          <td> <span class="letter_filter"> до </span> <input id='right-range' value="1000" class="input__price"> </td>
+          <td> <span class="letter_filter"> от </span> <input id='left-range' value="<%= min %>" class="input__price"> </td>
+          <td> <span class="letter_filter"> до </span> <input id='right-range' value="<%= max %>" class="input__price"> </td>
         </tr>
         <tr>
-          <td><input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/></td>
+          <td><input id="ex2" type="text" class="span2" value="" data-slider-min="<%= min %>" data-slider-max="<%= max %>"/></td>
         </tr>
       </tr>
       <tr>

@@ -6,12 +6,13 @@ define(["app",
 			initialize: function(options) {
 				this.layout = options.layout;
 				this.category = options.category;
+				this.listCollection = options.listCollection;
 				this.showFilter();
 			},
 
 			showFilter: function() {
 				this.model = App.request('get:filter', this.category);
-				this.view = new Filter.View({model: this.model, category: this.category});
+				this.view = new Filter.View({model: this.model, category: this.category, listCollection: this.listCollection});
 				this.layout.showChildView('filterRegion', this.view);
 			}
 		});
