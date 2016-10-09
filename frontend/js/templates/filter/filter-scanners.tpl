@@ -49,6 +49,23 @@
 
       <tr>
         <tr>
+          <th class="filter__header"> Двустороннее сканирование </th>
+        </tr>
+        <tr>
+          <td>
+            <div class="option__text">
+              <% _.each(doubleScan, function(option) { %>
+                <div class="checkbox">
+                  <label><input type="checkbox" value=""> <%= option %> </label>
+                </div>
+              <% }) %>
+            </div>
+          </td>
+        </tr>
+      </tr>
+
+      <tr>
+        <tr>
           <th class="filter__header"> Максимальный формат </th>
         </tr>
         <tr>
