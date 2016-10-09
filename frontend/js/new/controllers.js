@@ -1,4 +1,5 @@
 define(["app",
+		"filter/models",
 		"header/controllers",
 		"footer/controllers",
 		"new/models",
@@ -20,6 +21,7 @@ define(["app",
 				this.view = new New.View({model: this.model});
 				this.listenTo(this.view, 'model:save', this.modelSave);
 				App.sourceRegion.show(this.view);
+				this.listenTo(this.view, 'change:group', this.changeGroup);
 			},
 
 			modelSave: function() {
@@ -28,8 +30,16 @@ define(["app",
 				token.done(function(response) {
 					authToken = App.parseToken(response);
 					self.model.set('authenticity_token', authToken);
-					self.model.save();
+					self.model.save().done(function() {
+						Backbone.history.navigate('', true);
+					});
 				});
+			},
+			changeGroup: function(group) {
+				this.model.set('group', group.slice(0,-1));
+				this.infoModel = App.request('get:filter', group);
+				this.info = new New.InfoView({model: this.infoModel, category: group});
+				this.view.showChildView('infoRegion', this.info);
 			},
 
 			getAuthenticityToken: function() {

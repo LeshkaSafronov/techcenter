@@ -13,9 +13,9 @@
 				  <button id='group' type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Выберите категорию <span class="caret"></span>
 				  </button>
 				  <ul class="dropdown-menu">
-				  	<% var keys = _.keys(Config.Dict_New); %>
+				  	<% var keys = _.keys(Config.Dict); %>
 				  	<% _.each(keys, function(key) {  %>
-				  		<li><a id ='<%= key %>' class='category' href='javascript:void(0)'> <%= Config.Dict_New[key] %> </a></li>
+				  		<li><a id ='<%= key %>' class='category' href='javascript:void(0)'> <%= Config.Dict[key] %> </a></li>
 				  	<% }) %>
 				  </ul>
 				</div>
@@ -26,6 +26,7 @@
 	  				<textarea id='description' class="form-control" rows="5"></textarea>
 	  			</div>
 	  		</div>
+	  		<div id='info-region'></div>
 	  		<div class="new__field">
 	  			<div class="new__field-profile">
 					<p class="new__field-name"> Габариты: </p>
@@ -43,12 +44,6 @@
 		  		</div>
 	  		</div>
 	  		<div class="new__field">
-				<p class="new__field-name"> Теги: </p>
-				<div class="input-group new__input">
-	  				<input type="text" class="form-control" placeholder="" aria-describedby="sizing-addon2">
-	  			</div>
-	  		</div>
-	  		<div class="new__field">
 	  			<div class="new__field-price">
 					<p class="new__field-name"> Цена: </p>
 					<div class="input-group new__input">
@@ -56,45 +51,6 @@
 		  			</div>
 		  			<p> тенге </p>
 		  		</div>
-		  	</div>
-		  	<div class="new__field-thumb">
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/1.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/2.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/1.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/1.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/2.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/1.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/1.png'>
-		  		</div>
-		  		<div class="thumb-photo">
-		  			<img class='remove_img' src='images/remove.png'>
-		  			<img class='upload__photo' src='images/2.png'>
-		  		</div>
-		  	</div>
-
-
-		  	<div class="new__field">
-	  			<button type="button" class="btn btn-success">Добавить фото</button>
 		  	</div>
 			<div class="new__field-save">
 		  		<button id='save' type="button" class="btn btn-default">Сохранить</button>

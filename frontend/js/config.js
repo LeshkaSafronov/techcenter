@@ -8,35 +8,22 @@ var Config = {
 		scanners: 'Сканеры',
 		papers: 'Бумага',
 		cartridges: 'Картриджи',
-		shredders: 'Шредеры',
 		laminators: 'Ламинаторы',
 		bookbinders: 'Переплетный машины',
 		others: 'Расходные материалы',
-	},
-
-	Dict_New: {
-		printer: 'Принтеры',
-		mfu: 'МФУ',
-		scanner: 'Сканеры',
-		paper: 'Бумага',
-		cartridge: 'Картриджи',
-		shredder: 'Шредеры',
-		laminator: 'Ламинаторы',
-		bookbinder: 'Переплетный машины',
-		other: 'Расходные материалы'
 	},
 	
 	property: {
 		printers: {
 			colors: ['Цветная', 'Черно-белая'],
-			maxFormats: ['A0', 'A1', 'A2', 'A3', 'A4'],
+			maxFormats: ['А0', 'А1', 'А2', 'А3', 'А4'],
 			doublePrint: ['Есть', 'Нет'],
 			brands: ['Xerox', 'Konica']
 		},
 
 		mfus: {
 			colors: ['Цветная', 'Черно-белая'],
-			maxFormats: ['A0', 'A1', 'A2', 'A3', 'A4'],
+			maxFormats: ['А0', 'А1', 'А2', 'А3', 'А4'],
 			doublePrint: ['Есть', 'Нет'],
 			brands: ['Xerox', 'Konica']
 		},
@@ -45,7 +32,7 @@ var Config = {
 			types: ['Планшетный', 'Протяжный', 'Слайд-сканер'],
 			automaticFeed: ['Есть', 'Нет'],
 			doubleScan: ['Есть', 'Нет'],
-			maxFormats: ['A0', 'A1', 'A2', 'A3', 'A4'],
+			maxFormats: ['А0', 'А1', 'А2', 'А3', 'А4'],
 			brands: ['Xerox', 'Konica']
 		},
 
