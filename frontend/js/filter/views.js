@@ -52,7 +52,6 @@ define(["app",
 			initialize: function(options) {
 				this.options = options;
 				this.modelToSave = options.modelToSave;
-				console.log(this.modelToSave.toJSON());
 				var self = this;
 				this.options.listCollection.on('sync', function() {
 					self.render();
@@ -72,13 +71,10 @@ define(["app",
 				var self = this;
 				var min = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.min : 0;
 				var max = !_.isUndefined(this.options.listCollection.minMax) ? this.options.listCollection.minMax.max : 0;
-				//var min = +$.cookie('min');
-				//var max = +$.cookie('max');
 				if (this.options.category !== 'cartridges') {
 					this.slider = new Slider('#ex2', {
 						tooltip: 'hide',
 						value: [min, max]
-						//value: [$.cookie('min'), $.cookie('max')]
 					});
 					this.slider.on('slide', function() {
 						self.$('#left-range').val(self.slider.getValue()[0]);
@@ -100,9 +96,7 @@ define(["app",
 				var text = e.currentTarget.labels[0].textContent;
 				var className = e.currentTarget.className;
 				var checked = e.currentTarget.checked;
-				console.log(text, className, checked);
 				var filters = this.modelToSave.get('filters');
-				//var filter = this.modelToSave.get('filters')[className];
 				if (checked) {
 					filters[className].push(text);
 				}
@@ -111,36 +105,29 @@ define(["app",
 					filters[className].splice(id,1);
 				}
 				this.modelToSave.set('filters', filters);
-				console.log(this.modelToSave.toJSON());
-
-
 			},
 
 			prepareCheckboxes: function() {
-				//console.log(Config.filters);
 				var self = this;
 				var filters = this.modelToSave.get('filters');
 				_.each(Config.filters, function(filter) {
-					//console.log(filter);
-					//console.log($.cookie(filter));
 					for (var i = 0; i < self.$('.' + filter).length; i++) {
 						var checkbox = self.$('.' + filter).eq(i);
 						var text = checkbox[0].labels[0].textContent;
-						//console.log(text);
-						console.log($.cookie(filter));
 						if (!_.isUndefined($.cookie(filter))) {
 							var arr = $.cookie(filter).split('&');
 							if (_.contains(arr, text)) {
 								checkbox.prop('checked', true);
-								filters[filter].push(text);
+								if (!_.contains(filters[filter], text)) {
+									filters[filter].push(text);	
+								}
+								
 							}
 
 						}
 					}
-
 				});
 				this.modelToSave.set('filters', filters);
-				console.log('THIS MODEL TO SAVE ', this.modelToSave.toJSON());
 			},
 
 			onShow: function() {

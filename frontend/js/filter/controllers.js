@@ -19,7 +19,6 @@ define(["app",
 			},
 
 			submit: function() {
-				console.log('THIS WILL BE AS COOKIE ', this.modelToSave.toJSON());
 				var self = this;
 				var token = self.getAuthenticityToken();
 				token.done(function(response) {
@@ -29,9 +28,6 @@ define(["app",
 					filters['min'] = self.view.slider.getValue()[0];
 					filters['max'] = self.view.slider.getValue()[1];
 					self.modelToSave.set('filters', filters);
-
-					//self.modelToSave.set('min', self.view.slider.getValue()[0]);
-					//self.modelToSave.set('max', self.view.slider.getValue()[1]);
 					self.modelToSave.save().done(function() {
 						var curUrl = Backbone.history.getFragment();
 						self.restartRouting();
