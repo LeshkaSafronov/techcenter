@@ -22,7 +22,7 @@
             <div class="option__text">
               <% _.each(kinds, function(kind) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= kind %> </label>
+                  <label><input class='kind' type="checkbox" value=""><%= kind %></label>
                 </div>
               <% }) %>
             </div>
@@ -39,7 +39,7 @@
             <div class="option__text">
               <% _.each(automaticFeed, function(option) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= option %> </label>
+                  <label><input class='automaticFeed' type="checkbox" value=""><%= option %></label>
                 </div>
               <% }) %>
             </div>
@@ -56,7 +56,7 @@
             <div class="option__text">
               <% _.each(doubleScan, function(option) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= option %> </label>
+                  <label><input class='doubleScan' type="checkbox" value=""><%= option %></label>
                 </div>
               <% }) %>
             </div>
@@ -73,7 +73,7 @@
             <div class="option__text">
               <% _.each(maxFormats, function(format) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= format %> </label>
+                  <label><input class='format' type="checkbox" value=""><%= format %></label>
                 </div>
               <% }) %>
             </div>
@@ -90,7 +90,7 @@
             <div class="option__text">
               <% _.each(brands, function(brand) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= brand %> </label>
+                  <label><input class='brand' type="checkbox" value=""><%= brand %></label>
                 </div>
               <% }) %>
             </div>
@@ -101,6 +101,6 @@
   </table>
 
   <br>
-  <button type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
+  <button id='submit' type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
   <br>
 </div>

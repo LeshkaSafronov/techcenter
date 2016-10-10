@@ -22,7 +22,7 @@
             <div class="option__text">
               <% _.each(kinds, function(kind) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= kind %> </label>
+                  <label><input class='kind' type="checkbox" value=""><%= kind %></label>
                 </div>
               <% }) %>
             </div>
@@ -33,6 +33,6 @@
   </table>
 
   <br>
-  <button type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
+  <button id='submit' type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
   <br>
 </div>

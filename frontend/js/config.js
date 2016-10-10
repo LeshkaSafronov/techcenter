@@ -64,6 +64,8 @@ var Config = {
 		}
 	},
 
+	filters: ['color', 'maxFormat', 'doublePrint', 'brand', 'automaticFeed', 'doubleScan', 'format', 'kind'],
+
 	currentHeigth : 50,
 	per_page: 12,
 	photoPagination: 5

@@ -22,7 +22,7 @@
             <div class="option__text">
               <% _.each(colors, function(color) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= color %> </label>
+                  <label><input class='color' type="checkbox" value=""><%= color %></label>
                 </div>
               <% }) %>
             </div>
@@ -39,7 +39,7 @@
             <div class="option__text">
               <% _.each(maxFormats, function(format) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= format %> </label>
+                  <label><input class='maxFormat' type="checkbox" value=""><%= format %></label>
                 </div>
               <% }) %>
             </div>
@@ -56,7 +56,7 @@
             <div class="option__text">
               <% _.each(doublePrint, function(option) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= option %> </label>
+                  <label><input class='doublePrint' type="checkbox" value=""><%= option %></label>
                 </div>
               <% }) %>
             </div>
@@ -73,7 +73,7 @@
             <div class="option__text">
               <% _.each(brands, function(brand) { %>
                 <div class="checkbox">
-                  <label><input type="checkbox" value=""> <%= brand %> </label>
+                  <label><input class='brand' type="checkbox" value=""><%= brand %></label>
                 </div>
               <% }) %>
             </div>
@@ -84,6 +84,6 @@
   </table>
 
   <br>
-  <button type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
+  <button id='submit' type="button" class="btn btn-block btn-default center-block filter__btn">Фильтровать</button>
   <br>
 </div>

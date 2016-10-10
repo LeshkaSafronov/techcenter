@@ -42,6 +42,7 @@ define(["app",
 
 			initialize: function() {
 				this.listenTo(this.collection, 'sync', function() {
+					this.$el.show();
 					this._buildPagination(this._startPagination(this.collection.options.page));
 				});
 			},

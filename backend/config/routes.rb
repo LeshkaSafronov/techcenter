@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'api/search' => 'app#search'
   get '/help' => 'app#help'
 
-
+  get 'api/filter' => 'filter#auth'
+  post 'api/filters' => 'filter#set'
 
 
   get 'api/users/(:id)' => 'user#show'
