@@ -29,6 +29,10 @@ define(["app",
 				'#name': 'name',
 				'#description': 'description',
 				'#price': 'price',
+				'#weight': {
+					observe: 'weight',
+					onSet: 'format'
+				},
 				'#width': {
 					observe: 'width',
 					onSet: 'format'

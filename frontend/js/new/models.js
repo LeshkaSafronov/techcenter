@@ -7,6 +7,7 @@ define(["app"], function(App) {
 				group: '',
 				avatar: '',
 				price: 0,
+				weight: 0,
 				width: 0,
 				height: 0,
 				depth: 0,

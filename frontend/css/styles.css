@@ -368,3 +368,19 @@ td a {
 .new__checkbox {
 	margin-right: 15px; 
 }
+
+
+.new__field-weight {
+	display: flex;
+}
+.new__field-weight > p {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;   
+}
+.new__input-weight {
+	width: 57px;
+	margin-right: 10px; 
+}
+
+

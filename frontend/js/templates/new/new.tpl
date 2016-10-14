@@ -28,6 +28,15 @@
 	  		</div>
 	  		<div id='info-region'></div>
 	  		<div class="new__field">
+	  			<div class="new__field-weight">
+					<p class="new__field-name"> Вес: </p>
+					<div class="input-group new__input-weight">
+		  				<input id='weight' type="text" class="form-control">
+		  			</div>
+		  			<p> кг </p>
+		  		</div>
+		  	</div>
+	  		<div class="new__field">
 	  			<div class="new__field-profile">
 					<p class="new__field-name"> Габариты: </p>
 					<div class="input-group new__input-profile">
