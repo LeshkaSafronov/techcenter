@@ -384,3 +384,16 @@ td a {
 }
 
 
+.new__field-color_item {
+	display: flex;
+}
+.new__field-color_item > p {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-right: 10px;   
+}
+.new__input-color_item {
+	width: 200px;
+	margin-right: 10px; 
+}
+

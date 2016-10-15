@@ -20,6 +20,7 @@ class ItemController < ApplicationController
 			name: params[:name],
 			group: params[:group],
 			price: params[:price],
+			color_item: params[:color_item],
 			weight: params[:weight],
 			width: params[:width],
 			height: params[:height],

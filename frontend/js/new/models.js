@@ -11,6 +11,7 @@ define(["app"], function(App) {
 				width: 0,
 				height: 0,
 				depth: 0,
+				color_item: '',
 				color: '',
 				maxFormat: '',
 				doublePrint: '',

@@ -10,9 +10,10 @@ define(["app",
 			initialize: function(id) {
 				this.model = App.request('get:item', id);
 				this.addItem = App.request('get:addItem', id);
-				this.view = new Show.View({model: this.model});
+				this.layoutInfo = new Show.LayoutInfo({model: this.model});
 				this.layout = new Show.LayoutView({model: this.model});
-				
+				this.mainInfo = new Show.MainInfo({model: this.model});
+				this.advancedInfo = new Show.AdvancedInfo({model: this.model});
 				var self = this;
 				this.model.on('sync', function() {
 					App.sourceRegion.show(self.layout);
@@ -23,9 +24,11 @@ define(["app",
 				});
 			},
 			showItem: function(id) {
-				this.layout.showChildView('infoRegion', this.view);
+				this.layout.showChildView('infoRegion', this.layoutInfo);
+				this.layoutInfo.showChildView('mainInfo', this.mainInfo);
+				this.layoutInfo.showChildView('advancedInfo', this.advancedInfo);
 				var self = this;
-				this.listenTo(this.view, 'view:addItem', function(quantity) {
+				this.listenTo(this.layoutInfo, 'view:addItem', function(quantity) {
 					var token = self.getAuthenticityToken();
 					token.done(function(response) {
 						authToken = App.parseToken(response);

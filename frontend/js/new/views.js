@@ -29,6 +29,7 @@ define(["app",
 				'#name': 'name',
 				'#description': 'description',
 				'#price': 'price',
+				'#color_item': 'color_item',
 				'#weight': {
 					observe: 'weight',
 					onSet: 'format'

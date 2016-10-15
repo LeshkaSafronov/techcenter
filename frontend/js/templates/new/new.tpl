@@ -36,6 +36,14 @@
 		  			<p> кг </p>
 		  		</div>
 		  	</div>
+		  	<div class="new__field">
+	  			<div class="new__field-color_item">
+					<p class="new__field-name"> Цвет: </p>
+					<div class="input-group new__input-color_item">
+		  				<input id='color_item' type="text" class="form-control">
+		  			</div>
+		  		</div>
+		  	</div>
 	  		<div class="new__field">
 	  			<div class="new__field-profile">
 					<p class="new__field-name"> Габариты: </p>

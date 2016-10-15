@@ -25,7 +25,7 @@
 	<div class="input-group new__input">
 		<div class="checkbox">
 			<% _.each(maxFormats, function(format) { %>
-	  			<label class='new__checkbox'><input id='<%= maxFormats.indexOf(format) %>' class='format' type="checkbox" value=""><%= format %></label>
+	  			<label class='new__checkbox'><input id='<%= maxFormats.indexOf(format) %>' class='maxFormat' type="checkbox" value=""><%= format %></label>
 	  		<% }) %>
 		</div>
 	</div>

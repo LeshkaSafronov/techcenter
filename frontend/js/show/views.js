@@ -1,6 +1,26 @@
 define(["app",
 		"tpl!templates/show/layout.tpl",
-		"tpl!templates/show/showItem.tpl"], function(App, showTemplateTpl, showItemTpl) {
+		"tpl!templates/show/showItem.tpl",
+		"tpl!templates/show/main-info.tpl",
+		"tpl!templates/show/advanced-info-printers.tpl",
+		"tpl!templates/show/advanced-info-mfus.tpl",
+		"tpl!templates/show/advanced-info-scanners.tpl",
+		"tpl!templates/show/advanced-info-papers.tpl",
+		"tpl!templates/show/advanced-info-cartridges.tpl",
+		"tpl!templates/show/advanced-info-laminators.tpl",
+		"tpl!templates/show/advanced-info-bookbinders.tpl",
+		"tpl!templates/show/advanced-info-others.tpl"], function(App, 
+																	showTemplateTpl, 
+																	showItemTpl, 
+																	mainInfoTpl,
+																	advancedInfoPrinters,
+																	advancedInfoMfus,
+																	advancedInfoScanners,
+																	advancedInfoPapers,
+																	advancedInfoCartridges,
+																	advancedInfoLaminators,
+																	advancedInfoBookbinders,
+																	advancedInfoOthers) {
 	App.module("StoreApp.Show", function(Show, App, Backbone, Marionette, $, _) {
 		Show.LayoutView = Marionette.LayoutView.extend({
 			template: showTemplateTpl,
@@ -9,16 +29,44 @@ define(["app",
 				infoRegion: '#info-region'
 			}
 		});
-		Show.View = Marionette.ItemView.extend({
+		
+		Show.LayoutInfo = Marionette.LayoutView.extend({
 			template: showItemTpl,
 			
 			events: {
 				'click #add_to_cart' : 'addToCart'
 			},
 
+			regions: {
+				mainInfo: '#main-info',
+				advancedInfo: '#advanced-info'
+			},
+
 			addToCart: function() {
 				this.trigger('view:addItem', this.$('#countItem').val());
 			}
-		})
+		});
+
+		Show.MainInfo = Marionette.ItemView.extend({
+			template: mainInfoTpl
+		});
+
+		Show.AdvancedInfo = Marionette.ItemView.extend({
+			
+			dataTeplate: {
+				printer: advancedInfoPrinters,
+				mfu: advancedInfoMfus,
+				scanner: advancedInfoScanners,
+				paper: advancedInfoPapers,
+				cartridge: advancedInfoCartridges,
+				laminator: advancedInfoLaminators,
+				bookbinder: advancedInfoBookbinders,
+				other: advancedInfoOthers
+			},
+			
+			getTemplate: function() {
+				return this.dataTeplate[this.model.get('group')];
+			}
+		});
 	});
 });
