@@ -7,6 +7,7 @@ define(["app",
 				'click #login': 'login',
 				'click #main' : 'main',
 				'click #submit' : 'clickSearch',
+				'click #help' : 'help',
 				'keypress #search' : 'search'
 	 		},
 
@@ -30,6 +31,10 @@ define(["app",
 
 	 		login: function() {
 	 			Backbone.history.navigate('login', true);
+	 		},
+
+	 		help: function() {
+	 			Backbone.history.navigate('help', true);
 	 		},
 
 	 		search: function(e) {

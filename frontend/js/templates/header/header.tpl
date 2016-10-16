@@ -21,7 +21,7 @@
             
           </div>
 </a>    </div>
-    <a href="/help" class="header"><div class="hidden-xs hidden-sm header">Помощь&nbsp<img src="images/i/help.png" alt="Help" /></div></a>
+    <a id='help' href='javascript:void(0)' class="header"><div class="hidden-xs hidden-sm header">Помощь&nbsp<img src="images/i/help.png" alt="Help" /></div></a>
       <a id='login' href='javascript:void(0)' class="header"><div class="hidden-xs hidden-sm header"><%= _.isUndefined(name) ? 'Логин' : name %>&nbsp&nbsp<img src="images/i/login.png" alt="User" /></div></a>
   </div>
 </header>

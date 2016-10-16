@@ -20,7 +20,8 @@ define(["app",
 				'users/(:id)' : 'users',
 				'new' : 'new',
 				'search' : 'search',
-				'edit/:id' : 'edit'
+				'edit/:id' : 'edit',
+				'help' : 'help'
 			}
 		});
 		var API = Marionette.Controller.extend({
@@ -73,6 +74,12 @@ define(["app",
 			edit: function(id) {
 				require(['edit/controllers'], function(EditController) {
 					new EditController(id);
+				});
+			},
+
+			help: function() {
+				require(['help/controllers'], function(HelpController) {
+					new HelpController();
 				});
 			},
 			
