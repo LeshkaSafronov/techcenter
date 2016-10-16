@@ -31,7 +31,7 @@ define(["app",
 					authToken = App.parseToken(response);
 					self.model.set('authenticity_token', authToken);
 					self.model.save().done(function() {
-						Backbone.history.navigate('show/' + self.model.id, true);
+						App.trigger('show:item', self.model.id);
 					});
 				});
 			},
