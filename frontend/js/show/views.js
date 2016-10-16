@@ -35,7 +35,8 @@ define(["app",
 			
 			events: {
 				'click #add_to_cart' : 'addToCart',
-				'click #destroy' : 'deleteFromBase'
+				'click #destroy' : 'deleteFromBase',
+				'click #edit' : 'editItem'
 			},
 
 			regions: {
@@ -45,6 +46,10 @@ define(["app",
 
 			addToCart: function() {
 				this.trigger('view:addItem', this.$('#countItem').val());
+			},
+
+			editItem: function() {
+				this.trigger('item:edit', this.model.id);
 			},
 
 			deleteFromBase: function() {

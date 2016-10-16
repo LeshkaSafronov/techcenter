@@ -28,6 +28,7 @@ class ItemController < ApplicationController
 			description: params[:description],
 			avatar: params[:avatar]
 		}
+
 		@advanced_info = {
 			printer: {
 				color: params[:color],
@@ -85,9 +86,59 @@ class ItemController < ApplicationController
 	end
 
 	def edit
-		params[:details] = storeable params[:details]
-		@item = Item.find(params[:id]).update(item_params)
-		redirect_to "/item/#{params[:id]}"
+		item_params = params[:item]
+
+		@main_info = {
+			name: item_params[:name],
+			group: item_params[:group],
+			price: item_params[:price],
+			color_item: item_params[:color_item],
+			weight: item_params[:weight],
+			width: item_params[:width],
+			height: item_params[:height],
+			depth: item_params[:depth],
+			description: item_params[:description],
+			avatar: item_params[:avatar]
+		}
+		
+		@advanced_info = {
+			printer: {
+				color: item_params[:color],
+				maxFormat: item_params[:maxFormat],
+				doublePrint: item_params[:doublePrint],
+				brand: item_params[:brand]
+			},
+			mfu: {
+				color: item_params[:color],
+				maxFormat: item_params[:maxFormat],
+				doublePrint: item_params[:doublePrint],
+				brand: item_params[:brand]
+			},
+			scanner: {
+				kind: item_params[:kind],
+				automaticFeed: item_params[:automaticFeed],
+				doubleScan: item_params[:doubleScan],
+				maxFormat: item_params[:maxFormat],
+				brand: item_params[:brand]
+			},
+			paper: {
+				format: item_params[:format],
+				brand: item_params[:brand]
+			},
+			cartridge: {},
+			laminator: {
+				kind: item_params[:kind]
+			},
+			bookbinder: {
+				kind: item_params[:kind]
+			},
+			other: {
+				kind: item_params[:kind]
+			}
+		}
+
+		@item = Item.find(params[:id]).update(@main_info.merge(@advanced_info[params[:group].to_sym]))
+		render :json => {message: 'Success'}
 	end
 	
 	def auth_destroy
@@ -97,9 +148,5 @@ class ItemController < ApplicationController
 	def destroy
 		Item.find(params[:id]).delete
 		render :json => {message: 'Success'}, status: 200
-	end
-
-	def item_params
-		params.permit(:avatar, :name, :description, :details, :price, :group)
 	end
 end

@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   
   post 'api/item' => 'item#create'
   
-  patch 'api/item/(:id)' => 'item#edit'
+  put 'api/item/(:id)' => 'item#edit'
 
   get 'api/destroy/item/(:id)' => 'item#auth_destroy'
   post 'api/destroy/item/(:id)' => 'item#destroy'

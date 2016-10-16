@@ -31,6 +31,7 @@ define(["app",
 				this.layoutInfo.showChildView('advancedInfo', this.advancedInfo);
 				this.listenTo(this.layoutInfo, 'view:addItem', this.addToCart);
 				this.listenTo(this.layoutInfo, 'item:destroy', this.deleteFromBase);
+				this.listenTo(this.layoutInfo, 'item:edit', this.itemEdit);
 			},
 
 			addToCart: function(quantity) {
@@ -47,6 +48,10 @@ define(["app",
 					});
 
 				});
+			},
+
+			itemEdit: function(id) {
+				App.trigger('edit:item', id);
 			},
 
 			deleteFromBase: function(id) {

@@ -19,7 +19,8 @@ define(["app",
 				'login' : 'login',
 				'users/(:id)' : 'users',
 				'new' : 'new',
-				'search' : 'search'
+				'search' : 'search',
+				'edit/:id' : 'edit'
 			}
 		});
 		var API = Marionette.Controller.extend({
@@ -68,6 +69,12 @@ define(["app",
 					new SeachController(App.UrlToJSON(url));
 				});
 			},
+
+			edit: function(id) {
+				require(['edit/controllers'], function(EditController) {
+					new EditController(id);
+				});
+			},
 			
 			hasLogin: function() {
 				var cookieModel = App.request('get:cookieUser');
@@ -80,8 +87,8 @@ define(["app",
 		App.addInitializer(function() {
 			var router = new StoreApp.AppRouter({controller: new API()});
 			router.listenTo(App, 'route:main', function(nav) {
-				$(document).scrollTop(0);
 				Backbone.history.navigate('', true);
+				$(document).scrollTop(0);
 			});
 			
 			router.listenTo(App, 'route:menu', function(nav) {
@@ -109,6 +116,11 @@ define(["app",
 
 			router.listenTo(App, 'show:user', function(id) {
 				Backbone.history.navigate('users/' + id, true);
+			});
+
+			router.listenTo(App, 'edit:item', function(id) {
+				Backbone.history.navigate('edit/' + id, true);
+				$(document).scrollTop(0);
 			});
 			Backbone.history.start();
 		});
