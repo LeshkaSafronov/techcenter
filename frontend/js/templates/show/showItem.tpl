@@ -1,6 +1,6 @@
 <div id='main-info'></div>
 <div id='advanced-info'></div>
-<p class="header__text"> Цена: <%= price %> руб </p>
+<p class="header__text"> Цена: <%= price %> тенге </p>
 <div class='action-button__show'>
 	<div id='for-cart'>
 	  <button id='add_to_cart' type="button" class="btn btn-success">В корзину</button>

@@ -98,6 +98,7 @@ define(["app",
 			
 			router.listenTo(App, 'route:login', function(nav) {
 				Backbone.history.navigate(nav, true);
+				$(document).scrollTop(0);
 			});
 
 			router.listenTo(App, 'route:page', function(options) {
@@ -112,10 +113,12 @@ define(["app",
 
 			router.listenTo(App, 'show:item', function(id) {
 				Backbone.history.navigate('show/' + id, true);
+				$(document).scrollTop(0);
 			});
 
 			router.listenTo(App, 'show:user', function(id) {
 				Backbone.history.navigate('users/' + id, true);
+				$(document).scrollTop(0);
 			});
 
 			router.listenTo(App, 'edit:item', function(id) {

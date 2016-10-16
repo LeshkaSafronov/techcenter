@@ -14,7 +14,7 @@
 	<div class="input-group new__input">
 		<div class="checkbox">
 			<% _.each(automaticFeed, function(option) { %>
-	  			<label class='new__checkbox'><input id='<%= automaticFeed.indexOf(option) %>' class='automaticFeed' type="checkbox" value=""> <%= option %> </label>
+	  			<label class='new__checkbox'><input id='<%= automaticFeed.indexOf(option) %>' class='automaticFeed' type="checkbox" value=""><%= option %></label>
 	  		<% }) %>
 		</div>
 	</div>
