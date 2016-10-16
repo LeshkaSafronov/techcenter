@@ -89,10 +89,14 @@ class ItemController < ApplicationController
 		@item = Item.find(params[:id]).update(item_params)
 		redirect_to "/item/#{params[:id]}"
 	end
+	
+	def auth_destroy
+		render 'auth_destroy'
+	end
 
 	def destroy
 		Item.find(params[:id]).delete
-		redirect_to "/"
+		render :json => {message: 'Success'}, status: 200
 	end
 
 	def item_params

@@ -43,7 +43,12 @@ Rails.application.routes.draw do
   post 'api/item' => 'item#create'
   
   patch 'api/item/(:id)' => 'item#edit'
-  delete 'api/item/(:id)' => 'item#destroy'
+
+  get 'api/destroy/item/(:id)' => 'item#auth_destroy'
+  post 'api/destroy/item/(:id)' => 'item#destroy'
+  
+
+
   delete 'cart_item/(:id)' => 'cart_item#destroy'
   delete 'cart_items/(:id)' => 'cart_item#remove'
   post 'cart_item/(:id)' => 'cart_item#add'

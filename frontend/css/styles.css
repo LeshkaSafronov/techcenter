@@ -396,4 +396,12 @@ td a {
 	width: 200px;
 	margin-right: 10px; 
 }
+.action-button__show {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
+#for-cart {
+	margin-bottom: 10px;
+}
