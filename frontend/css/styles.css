@@ -405,3 +405,46 @@ td a {
 #for-cart {
 	margin-bottom: 10px;
 }
+
+.header__cart {
+	font-size: xx-large;
+}
+
+.cart__photo {
+	height: 50px;
+}
+
+.cart__table > thead > tr > th {
+	text-align: center; 
+}
+
+.cart__table > tbody > tr > td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.cart__quantity-container {
+	display: flex;
+    justify-content: center;
+}
+
+#remove {
+	margin-right: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+#add {
+	margin-left: 10px;
+    width: 35px;
+    height: 35px;
+}
+
+.count__quantity {
+	margin-top: auto;
+    margin-bottom: auto;
+}
+
+.cart-container {
+	margin-top: 10px;
+}

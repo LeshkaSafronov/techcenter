@@ -8,6 +8,7 @@ define(["app",
 				'click #main' : 'main',
 				'click #submit' : 'clickSearch',
 				'click #help' : 'help',
+				'click #cart' : 'cart',
 				'keypress #search' : 'search'
 	 		},
 
@@ -35,6 +36,10 @@ define(["app",
 
 	 		help: function() {
 	 			Backbone.history.navigate('help', true);
+	 		},
+
+	 		cart: function() {
+	 			Backbone.history.navigate('cart', true);
 	 		},
 
 	 		search: function(e) {

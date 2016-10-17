@@ -12,8 +12,8 @@
       </div>
     </div>
     <div class="hidden-xs hidden-sm">
-      <a class="header" href="/cart/">
-          <div class="header">
+      <a class="header" href='javascript:void(0)'>
+          <div id='cart' class="header">
             В корзине&nbsp&nbsp
             <span id='count' class="badge"> <%= !_.isUndefined(sum) ? sum : '' %> </span>
             &nbsp
