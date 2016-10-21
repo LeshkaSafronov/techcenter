@@ -6,11 +6,9 @@ define(["app",
 			initialize: function() {
 				this.prepare();
 				this.model = App.request('get:cart');
-				this.view = new Cart.View();
+				this.collection = App.request('get:cartCollection');
+				this.view = new Cart.View({collection: this.collection});
 				var self = this;
-				this.listenTo(this.model, 'sync', function() {
-					console.log(self.model.toJSON());
-				});
 				this.show();
 			},
 
