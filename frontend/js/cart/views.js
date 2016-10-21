@@ -5,6 +5,13 @@ define(["app",
 		Cart.ItemView = Marionette.ItemView.extend({
 			template: itemTpl,
 			tagName: 'tr',
+			events: {
+				'click .link__item' : 'toItem'
+			},
+
+			toItem: function() {
+				App.trigger('show:item', this.model.get('item_id'));
+			}
 		});
 
 		Cart.View = Marionette.CompositeView.extend({
