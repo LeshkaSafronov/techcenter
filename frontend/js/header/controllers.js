@@ -1,17 +1,25 @@
 define(["app",
 		"cookie/models",
 		"cart/models",
-		"header/views"], function(App) {
+		"header/views",
+		"menu/views"], function(App) {
 	App.module("StoreApp.Header", function(Header, App, Backbone, Marionette, $, _) {
 		Header.Controller = Marionette.Controller.extend({
 			initialize: function() {
 				this.showHeader();
+				this.isShowMenu = 0;
 			},
 			showHeader: function() {
 				this.user = App.request('get:cookieUser');
 				this.cart = App.request('get:cart');
+				this.layout = new Header.Layout();
+				App.headerRegion.show(this.layout);
 				this.view = new Header.View({userModel: this.user, cartModel: this.cart});
-				App.headerRegion.show(this.view);
+				this.menuMobileView = new App.StoreApp.Menu.MobileView({userModel: this.user, cartModel: this.cart});
+
+				this.layout.showChildView('headerRegion', this.view);
+				this.layout.showChildView('menuRegion', this.menuMobileView);
+
 				this.listenTo(this.view, 'search:item', function(query) {
 					var data = App.request("items:entities", {query: query});
 					var searchView = new App.StoreApp.Search.Popup.CollectionView({collection: data.collection});
@@ -21,6 +29,11 @@ define(["app",
 					if (!this.view.isDestroyed) {
 						this.cart.fetch();
 					}
+				});
+
+				this.listenTo(this.view, 'show:navMobile', function() {
+					this.isShowMenu ? this.menuMobileView.$el.hide() : this.menuMobileView.$el.show();
+					this.isShowMenu ^= 1;
 				});
 			},
 

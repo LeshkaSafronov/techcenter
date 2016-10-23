@@ -1,6 +1,15 @@
 define(["app",
-		"tpl!templates/header/header.tpl"], function(App, headerTpl) {
+		"tpl!templates/header/header-layout.tpl",
+		"tpl!templates/header/header.tpl"], function(App, headerLayoutTpl, headerTpl) {
 	App.module("StoreApp.Header", function(Header, App, Backbone, Marionette, $, _) {
+		Header.Layout = Marionette.LayoutView.extend({
+			template: headerLayoutTpl,
+			regions: {
+				headerRegion: '#header-region',
+	 			menuRegion: '#menu-region-header'
+	 		},
+		});
+
 		Header.View = Marionette.ItemView.extend({
 			template: headerTpl,
 			events: {
@@ -9,7 +18,8 @@ define(["app",
 				'click #submit' : 'clickSearch',
 				'click #help' : 'help',
 				'click #cart' : 'cart',
-				'keypress #search' : 'search'
+				'keypress #search' : 'search',
+				'click #nav-mobile' : 'navMobile'
 	 		},
 
 	 		initialize: function(options) {
@@ -50,6 +60,10 @@ define(["app",
 
 	 		clickSearch: function(e) {
 	 			Backbone.history.navigate('search?query=' + this.$('#search').val(), true);
+	 		},
+
+	 		navMobile: function() {
+	 			this.trigger('show:navMobile');
 	 		},
 
 	 		serializeData: function() {

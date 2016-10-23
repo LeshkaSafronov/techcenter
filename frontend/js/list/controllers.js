@@ -8,13 +8,20 @@ define(["app",
 	App.module("StoreApp.List", function(List, App, Backbone, Marionette, $, _) {
 		List.Controller = Marionette.Controller.extend({
 			initialize: function(options) {
-				require(['header/controllers', 'footer/controllers'], function(HeaderController, FooterController) {
+				//new App.StoreApp.Menu.Controller();
+				require(['header/controllers', 'footer/controllers'], function(HeaderController, FooterController, MenuController) {
 					new HeaderController();
 					new FooterController();
 				});
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
-				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());
+				/*require(['menu/controllers'], function(MenuController) {
+					new MenuController({layout: pageLayout});
+				}) */
+				//App.trigger('render:menuDesktop', pageLayout, 'menuRegion');
+
+				
+				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.DesktopView());
 				this.cart = App.request('get:cart');
 				this.collection = App.request("list:entities", options);
 				var self = this;

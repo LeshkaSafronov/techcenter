@@ -466,3 +466,15 @@ td a {
 		height: 59px;
 	}
 }
+
+.nav-mobile__link {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.nav-mobile__menu {
+	display: flex;
+}
+
+.nav-mobile__menu > img {
+	margin: 0px 0px 0px 20px;
+}
