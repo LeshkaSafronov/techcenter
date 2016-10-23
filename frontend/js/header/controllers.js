@@ -41,6 +41,15 @@ define(["app",
 					}
 				});
 
+				$('#source').bind("touchmove", function() {
+					if (self.isShowMenu) {
+						self.menuMobileView.$el.hide();
+						self.isShowMenu = false;
+					}
+				});
+
+				
+
 				$('#source').scroll(function() {
 					if (self.isShowMenu) {
 						self.menuMobileView.$el.hide();
