@@ -4,13 +4,52 @@ define(["app"], function(App) {
 			defaults: {
 				cart: {},
 				items: {},
-				count: {}
+				count: {},
+				totalPrice: 0
 			},
 
 			url: function() {
 				return 'api/cart/' + this.id;
+			},
+
+			parse: function(response) {
+				count = response.count;
+				items = response.items;
+				var totalPrice = 0;
+				_.each(items, function(item) {
+					totalPrice += item.price * count[item.item_id];
+				});
+				response.totalPrice = totalPrice;
+				return response;
 			}
 		});
+
+		Cart.AddItem = Backbone.Model.extend({
+			url: function() {
+				return 'api/item/' + this.get('item_id') + '/add';
+			},
+			sync: function(method, model, options) {
+        		options = options || {};
+        		options.beforeSend = function (xhr) {
+		            xhr.setRequestHeader('authenticity_token', (model.get('authenticity_token')));
+        		};
+        		return Backbone.Model.prototype.sync.apply(this, arguments);
+    		}
+		});
+
+		Cart.RemoveItem = Backbone.Model.extend({
+			url: function() {
+				return 'api/item/' + this.get('item_id') + '/remove';
+			},
+			sync: function(method, model, options) {
+        		options = options || {};
+        		options.beforeSend = function (xhr) {
+		            xhr.setRequestHeader('authenticity_token', (model.get('authenticity_token')));
+        		};
+        		return Backbone.Model.prototype.sync.apply(this, arguments);
+    		}
+		});
+
 
 		Cart.Collection = Backbone.Collection.extend({
 			

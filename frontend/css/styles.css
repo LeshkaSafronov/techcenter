@@ -448,3 +448,6 @@ td a {
 .cart-container {
 	margin-top: 10px;
 }
+.cart__total-price {
+	font-size: x-large;
+}

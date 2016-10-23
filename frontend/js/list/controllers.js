@@ -3,6 +3,7 @@ define(["app",
 		"list/models",
 		"list/views",
 		"menu/views",
+		"cart/models",
 		"loading/views"], function(App) {
 	App.module("StoreApp.List", function(List, App, Backbone, Marionette, $, _) {
 		List.Controller = Marionette.Controller.extend({
@@ -14,6 +15,7 @@ define(["app",
 				var pageLayout = new List.PageLayout();
 				App.sourceRegion.show(pageLayout);
 				pageLayout.showChildView('menuRegion', new App.StoreApp.Menu.View());
+				this.cart = App.request('get:cart');
 				this.collection = App.request("list:entities", options);
 				var self = this;
 				if (options.name !== 'cartridges') {
@@ -31,7 +33,6 @@ define(["app",
 				}.bind(this));
 
 
-
 				this.listenTo(this.view, 'childview:view:addItem', function(childView, quantity) {
 					addItem = App.request('get:addItem', childView.model.id);
 					var token = self.getAuthenticityToken();
@@ -39,6 +40,7 @@ define(["app",
 						authToken = App.parseToken(response);
 						addItem.set({
 							'quantity': quantity,
+							'cart_id': self.cart.get('cart').id,
 							'authenticity_token': authToken
 						});
 						addItem.save().done(function() {

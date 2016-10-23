@@ -71,12 +71,14 @@ class ItemController < ApplicationController
 	def add
 		@item = Item.find(params[:item_id])
 		params[:quantity].to_i.times do
-			if logged_in?
-				CartItem.create(cart_id: cookies.permanent[:log_cart], item_id: @item.id, name: @item.name, price: @item.price, group: @item.group)
-			else
-				CartItem.create(cart_id: cookies.permanent[:stgr_cart], item_id: @item.id, name: @item.name, price: @item.price, group: @item.group)
-			end
+			CartItem.create(cart_id: params[:cart_id], item_id: @item.id, name: @item.name, price: @item.price, group: @item.group)
 		end
+		render :json => {message: 'Success'}
+	end
+
+	def remove
+		@cart = CartItem.find_by(item_id: params[:item_id], cart_id: params[:cart_id])
+		@cart.destroy! if @cart
 		render :json => {message: 'Success'}
 	end
 
@@ -145,6 +147,14 @@ class ItemController < ApplicationController
 		render 'auth_destroy'
 	end
 
+	def auth_add
+		render 'auth_add'
+	end
+
+	def auth_remove
+		render 'auth_remove'
+	end
+	
 	def destroy
 		Item.find(params[:id]).delete
 		render :json => {message: 'Success'}, status: 200

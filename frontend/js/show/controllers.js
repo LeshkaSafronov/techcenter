@@ -8,6 +8,7 @@ define(["app",
 	App.module("StoreApp.Show", function(Show, App, Backbone, Marionette, $, _) {
 		Show.Controller = Marionette.Controller.extend({
 			initialize: function(id) {
+				this.cart = App.request('get:cart');
 				this.model = App.request('get:item', id);
 				this.destroyModel = App.request('get:destroy', id);
 				this.addItem = App.request('get:addItem', id);
@@ -41,8 +42,10 @@ define(["app",
 					authToken = App.parseToken(response);
 					self.addItem.set({
 						'quantity': quantity,
+						'cart_id': self.cart.get('cart').id,
 						'authenticity_token': authToken
 					});
+					console.log(self.addItem.toJSON());
 					self.addItem.save().done(function() {
 						App.trigger('update:cart');
 					});

@@ -17,4 +17,11 @@
 		    <tbody></tbody>
 	  </table>
 	</div>
+	<div>
+		<div>
+			<p class="cart__total-price"> Итог: <%= totalPrice %> тенге</p>
+		</div>
+		<div>
+		</div>
+	</div>
 </div>

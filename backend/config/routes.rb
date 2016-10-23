@@ -35,7 +35,14 @@ Rails.application.routes.draw do
 
   get 'api/show/(:id)' => 'item#item'
   get 'api/item/(:id)' => 'item#show'
+
+
+  get 'api/item/(:id)/add' => 'item#auth_add'
   post 'api/item/(:id)/add' => 'item#add'
+
+  get 'api/item/(:id)/remove' => 'item#auth_remove'
+  post 'api/item/(:id)/remove' => 'item#remove'
+
 
   get 'api/new' => 'item#new'
   post 'api/new' => 'item#create'
