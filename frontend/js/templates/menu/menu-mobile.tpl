@@ -11,13 +11,6 @@
           </tr>
         <% }) %>
 
-
-        <tr>
-          <td>
-            <a href="javascript:void(0)" style="text-decoration:none"><b><hr></b></a>
-          </td>
-        </tr>
-
         <tr>
           <td>
             <a id='cart' href="javascript:void(0)" class='nav-mobile__menu' style="text-decoration:none">
