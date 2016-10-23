@@ -1,7 +1,7 @@
 class CartController < ApplicationController
 	def show
 		@cart = logged_in? ? Cart.active.find(cookies.permanent[:log_cart]) : Cart.active.find(cookies.permanent[:stgr_cart])
-		@goods = logged_in?  ? CartItem.where(cart_id: cookies.permanent[:log_cart]) : CartItem.where(cart_id: cookies.permanent[:stgr_cart])
+		@goods = logged_in?  ? CartItem.order(:item_id).where(cart_id: cookies.permanent[:log_cart]) : CartItem.order(:item_id).where(cart_id: cookies.permanent[:stgr_cart])
 		@count = {}
 		@goods.each { |x| @count[x.item_id] = @count[x.item_id].nil? ? 1 : @count[x.item_id]+=1 }
 		@goods = @goods.select(:item_id, :name, :price).distinct
