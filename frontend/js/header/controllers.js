@@ -34,6 +34,13 @@ define(["app",
 					} 
 				});
 
+				$('#source').click(function() {
+					if (self.isShowMenu) {
+						self.menuMobileView.$el.hide();
+						self.isShowMenu = false;
+					}
+				});
+				
 				this.listenTo(App, 'update:cart', function() {
 					if (!this.view.isDestroyed) {
 						this.cart.fetch();

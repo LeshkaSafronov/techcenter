@@ -478,3 +478,8 @@ td a {
 .nav-mobile__menu > img {
 	margin: 0px 0px 0px 20px;
 }
+
+#menu-region-header {
+	position: fixed;
+	width: 220px;
+}
