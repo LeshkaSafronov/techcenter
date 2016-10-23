@@ -34,13 +34,20 @@ define(["app",
 					} 
 				});
 
-				$('#source').click(function() {
+				$('#source').bind("mousewheel", function() {
 					if (self.isShowMenu) {
 						self.menuMobileView.$el.hide();
 						self.isShowMenu = false;
 					}
 				});
-				
+
+				$('#source').scroll(function() {
+					if (self.isShowMenu) {
+						self.menuMobileView.$el.hide();
+						self.isShowMenu = false;
+					}
+				});
+
 				this.listenTo(App, 'update:cart', function() {
 					if (!this.view.isDestroyed) {
 						this.cart.fetch();

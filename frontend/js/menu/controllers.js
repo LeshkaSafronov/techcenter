@@ -12,7 +12,6 @@ define(["app",
 			show: function() {
 				this.listenTo(App, 'render:menuDesktop', this.renderDesktop);
 				this.listenTo(App, 'render:menuMobile', this.renderMobile);
-				//this.layout.showChildView('menuRegion', this.desktopView);
 			},
 
 			renderDesktop: function(layout, region) {
