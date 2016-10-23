@@ -451,3 +451,18 @@ td a {
 .cart__total-price {
 	font-size: x-large;
 }
+#nav-mobile {
+	height: 20px;
+}
+
+@media (min-width: 992px) {
+	#nav-mobile {
+		display: none;
+	}
+}
+
+@media (max-width: 992px) {
+	.header__top, .header__div {
+		height: 59px;
+	}
+}

@@ -45,11 +45,9 @@ define(["app",
 						'cart_id': self.cart.get('cart').id,
 						'authenticity_token': authToken
 					});
-					console.log(self.addItem.toJSON());
 					self.addItem.save().done(function() {
 						App.trigger('update:cart');
 					});
-
 				});
 			},
 
