@@ -25,6 +25,15 @@ define(["app",
 					var searchView = new App.StoreApp.Search.Popup.CollectionView({collection: data.collection});
 					this.view.showChildView('searchRegion', searchView);
 				});
+
+				var self = this;
+				$(window).resize(function() {
+					if (self.isShowMenu && $(window).width() >= 977) {
+						self.menuMobileView.$el.hide();
+						self.isShowMenu = false;
+					} 
+				});
+
 				this.listenTo(App, 'update:cart', function() {
 					if (!this.view.isDestroyed) {
 						this.cart.fetch();
