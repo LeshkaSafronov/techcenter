@@ -27,9 +27,9 @@ define(["app",
 				});
 
 				var self = this;
-				$(window).resize(function() {
-					console.log($(window).width(), $(window).height());
-					if (self.isShowMenu && $(window).width() >= 977) {
+				$(document).resize(function() {
+					console.log($(document).width(), $(document).height());
+					if (self.isShowMenu && $(document).width() >= 977) {
 						self.menuMobileView.$el.hide();
 						self.isShowMenu = false;
 					} 
