@@ -8,6 +8,7 @@ define(["app",
 			initialize: function() {
 				this.showHeader();
 				this.isShowMenu = 0;
+				this.width = $(window).outerWidth();
 			},
 			showHeader: function() {
 				this.user = App.request('get:cookieUser');
@@ -28,8 +29,7 @@ define(["app",
 
 				var self = this;
 				$(window).resize(function() {
-					console.log($(window).outerWidth());
-					if (self.isShowMenu && $(window).outerWidth() >= 992) {
+					if (self.isShowMenu && $(window).outerWidth() >= 992 && self.width != $(window).outerWidth()) {
 						self.menuMobileView.$el.hide();
 						self.isShowMenu = false;
 					} 
